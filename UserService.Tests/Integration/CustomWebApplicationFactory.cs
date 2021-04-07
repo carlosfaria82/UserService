@@ -8,7 +8,7 @@ using System.Linq;
 using UserService.Data;
 using UserService.Data.Extensions;
 
-namespace UserService.Tests
+namespace UserService.Tests.Integration
 {
     public class CustomWebApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup>

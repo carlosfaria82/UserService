@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using UserService.Application.Dtos;
 using UserService.HostApi;
 using Xunit;
 
-namespace UserService.Tests.Integration
+namespace UserService.Tests.Integration.Controllers
 {
     public class UserControllerTests
         : IClassFixture<CustomWebApplicationFactory<Startup>>
@@ -54,7 +54,7 @@ namespace UserService.Tests.Integration
         public async Task Post_InsertNewUser()
         {
             var userDto = new UserDto { Name = "Test", Birthdate = new DateTime(1982, 07, 16) };
-            var stringContent = new StringContent(JsonConvert.SerializeObject(userDto), Encoding.UTF8, "application/json");
+            var stringContent = new StringContent(JsonSerializer.Serialize(userDto), Encoding.UTF8, "application/json");
 
             var response = await _client.PostAsync("api/user", stringContent);
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using UserService.HostApi.LoggerService;
 
 namespace UserService.HostApi.Extensions
 {
@@ -14,6 +15,7 @@ namespace UserService.HostApi.Extensions
             var domainAsembly = Assembly.Load(new AssemblyName($"{namespacePrefix}.{nameof(Domain)}"));
 
             return services
+                .AddSingleton<ILoggerManager, LoggerManager>()
                 .Scan(typeSourceSelector => typeSourceSelector
                     .FromAssemblies(applicationAsembly, dataAsembly, domainAsembly)
                         .AddClasses()

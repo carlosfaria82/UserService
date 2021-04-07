@@ -21,6 +21,9 @@ namespace UserService.Application.Mappers
 
         public User MapToEntity(UserDto userDto)
         {
+            if (userDto == null)
+                return null;
+
             return new User
             {
                 Name = userDto.Name,
