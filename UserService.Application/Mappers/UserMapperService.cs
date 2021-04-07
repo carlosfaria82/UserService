@@ -8,10 +8,13 @@ namespace UserService.Application.Mappers
     {
         public UserDto MapToDto(User user)
         {
+            if (user == null)
+                return null;
+
             return new UserDto
             {
                 Id = user.Id,
-                Name = user.Name,
+                Name = user?.Name,
                 Birthdate = user.Birthdate
             };
         }

@@ -27,22 +27,14 @@ namespace UserService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> Get()
         {
-            var result = await _userMgmtService.GetAllAsync();
-            if(result == null)
-            {
-                return NotFound();
-            }
+            var result = await _userMgmtService.GetAllAsync();            
             return Ok(result);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDto>> GetUser(int id)
         {
-            var result = await _userMgmtService.GetByIdAsync(id);
-            if (result == null)
-            {
-                return NotFound();
-            }
+            var result = await _userMgmtService.GetByIdAsync(id);          
             return Ok(result);
         }
 
