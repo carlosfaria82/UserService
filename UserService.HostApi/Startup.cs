@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using UserService.Data;
 using UserService.HostApi.Extensions;
 
 namespace UserService.HostApi
@@ -28,10 +23,14 @@ namespace UserService.HostApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConfigurationApplication();
+            services.AddDbContext<UserServiceContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString($"{nameof(UserService)}Context"));
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UserService.HostApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UserService", Version = "v1" });
             });
         }
 
@@ -42,7 +41,7 @@ namespace UserService.HostApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserService.HostApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserService v1"));
             }
 
             app.UseHttpsRedirection();

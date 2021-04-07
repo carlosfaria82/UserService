@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using System;
 using System.Threading.Tasks;
 using UserService.HostApi;
 using Xunit;
