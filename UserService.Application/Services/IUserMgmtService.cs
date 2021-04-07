@@ -1,4 +1,4 @@
-﻿namespace UserApi.Application.Services
+﻿namespace UserService.Application.Services
 {
     public interface IUserMgmtService
     {

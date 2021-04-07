@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserApi.Domain.Aggregates.UserAgg;
+using UserService.Domain.Aggregates.UserAgg;
 
-namespace UserApi.Data
+namespace UserService.Data
 {
     public class UserApiContext
         : DbContext

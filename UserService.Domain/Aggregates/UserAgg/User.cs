@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace UserApi.Domain.Aggregates.UserAgg
+namespace UserService.Domain.Aggregates.UserAgg
 {
     public class User
     {
