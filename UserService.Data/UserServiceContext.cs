@@ -3,10 +3,10 @@ using UserService.Domain.Aggregates.UserAgg;
 
 namespace UserService.Data
 {
-    public class UserApiContext
+    public class UserServiceContext
         : DbContext
     {
-        public UserApiContext(DbContextOptions<UserApiContext> options)
+        public UserServiceContext(DbContextOptions<UserServiceContext> options)
             : base(options)
         { }
 
