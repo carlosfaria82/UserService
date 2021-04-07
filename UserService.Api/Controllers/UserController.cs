@@ -9,7 +9,7 @@ using UserService.Application.Services;
 namespace UserService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UserController 
         : ControllerBase
     {
